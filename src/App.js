@@ -24,8 +24,14 @@ function App() {
   return (
     <div>
       react app
-      <h1>{getdata.title}</h1>
+      {
+        getdata && (<>
+          <h1>{getdata.title}</h1>
       <p>{getdata.description}</p>
+        
+        </>)
+      }
+    
     </div>
   )
 }
