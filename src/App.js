@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useEffect,useState} from 'react';
+import axios from "axios";
 
 function App() {
+
+  const [getdata,setgetdata]=useState(null);
+
+  useEffect(()=>{
+    const getDAta=async()=>{
+      const res=await  axios.get('https://dummyjson.com/products/1');
+      console.log(res.status)
+
+      setgetdata(res.data)
+
+    }
+    getDAta();
+
+
+    
+
+  },[])
+  
+  console.log(getdata)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      react app
+      <h1>{getdata.title}</h1>
+      <p>{getdata.description}</p>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
